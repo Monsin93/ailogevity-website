@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology — AI Longevity</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .pillar-deep {
+    padding: 120px 0;
+    border-top: 1px solid var(--border-subtle);
+    position: relative;
+  }
+  .pillar-deep:first-of-type { border-top: none; padding-top: 60px; }
+  .pillar-deep:nth-child(even) {
+    background: radial-gradient(ellipse at left, rgba(91,141,239,0.04), transparent 60%);
+  }
+  .pillar-deep:nth-child(odd) {
+    background: radial-gradient(ellipse at right, rgba(124,58,237,0.04), transparent 60%);
+  }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .pillar-grid.reverse { direction: rtl; }
+  .pillar-grid.reverse > * { direction: ltr; }
+  .pillar-content .pillar-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(91,141,239,0.08);
+    border: 1px solid rgba(91,141,239,0.2);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent-cyan);
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+  .pillar-content h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(36px, 4.5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .pillar-content h2 .hi { color: var(--accent-cyan); }
+  .pillar-content .tagline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--accent-cyan);
+    margin-bottom: 28px;
+    line-height: 1.4;
+  }
+  .pillar-content p.lead {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    margin-top: 8px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-cyan);
+  }
+  .feature-list li strong {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .tools-bar {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+  .tools-bar strong {
+    display: block;
+    color: var(--accent-cyan);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  /* Pillar visuals — use real images now */
+  .pillar-visual {
+    aspect-ratio: 1;
+    background: white;
+    border: 1px solid var(--border-subtle);
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1024px) {
+    .pillar-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pillar-grid.reverse { direction: ltr; }
+  }
+  @media (max-width: 768px) {
+    .pillar-deep { padding: 60px 0; }
+    .pillar-visual { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container">
+    <span class="label" style="font-size: 16px">Technology</span>
+    <h1>An integrated AI platform <br>from <span class="hi">hit</span> to <span class="hi">formulation</span>.</h1>
+    <p class="intro">Our workflow connects AI-guided discovery, computational developability assessment, and translational decision-making into a single, unified platform.</p>
+  </div>
+</header>
+
+<!-- Pillar 01 -->
+<section class="pillar-deep">
+  <div class="container">
+    <div class="pillar-grid">
+      <div class="pillar-content reveal">
+        <span class="pillar-tag">PILLAR 01</span>
+        <h2>AI-Guided <span class="hi">Discovery</span>.</h2>
+        <p class="tagline">Transforming millions of compounds into a decision-ready shortlist.</p>
+        <p class="lead">Our discovery engine combines computational chemistry with modern machine learning to evaluate vast chemical spaces, efficiently, accurately, and reproducibly.</p>
+        <ul class="feature-list">
+          <li><div><strong>Cloud-based virtual screening</strong>at scale, with elastic compute for large libraries.</div></li>
+          <li><div><strong>Molecular docking</strong>with high-accuracy scoring functions and pose evaluation.</div></li>
+          <li><div><strong>QSAR modeling</strong>(Quantitative Structure-Activity Relationship) for predictive bioactivity.</div></li>
+          <li><div><strong>ADMET prediction</strong>for early developability and toxicity flags.</div></li>
+          <li><div><strong>Multi-criteria hit prioritization</strong>focusing experimental resources where they matter most.</div></li>
+        </ul>
+        <div class="tools-bar">
+          <strong style="font-size: 16px">Tools &amp; Frameworks</strong>
+          GNINA · DeepChem · KNIME · Custom ML pipelines
+        </div>
+      </div>
+      <div class="pillar-visual reveal">
+        <img src="assets/tech-fig1.png" alt="AI-guided discovery: library preparation, receptor validation, ML classification, GNINA docking and drug-likeness">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillar 02 -->
+<section class="pillar-deep">
+  <div class="container">
+    <div class="pillar-grid reverse">
+      <div class="pillar-content reveal">
+        <span class="pillar-tag">PILLAR 02</span>
+        <h2>AI-Assisted <span class="hi">Formulation</span>.</h2>
+        <p class="tagline">Formulation thinking, integrated from day one.</p>
+        <p class="lead">Most discovery platforms hand off "hits" with no consideration for downstream development. We embed formulation
+feasibilty directly into the discovery process dramatically
+reducing late-stage attrition.</p>
+        <ul class="feature-list">
+          <li><div><strong>Computational developability assessment</strong>for every shortlisted candidate.</div></li>
+          <li><div><strong>Nanoformulation strategy</strong>guided by AI-predicted physicochemical properties.</div></li>
+          <li><div><strong>Solubility, stability, and bioavailability</strong>prediction at the molecular level.</div></li>
+          <li><div><strong>Early identification of formulation red flags</strong>before resource commitment.</div></li>
+        </ul>
+        <div class="tools-bar">
+          <strong style="font-size: 16px">Capabilities</strong>
+          Developability scoring · Excipient selection · Delivery modeling
+        </div>
+      </div>
+      <div class="pillar-visual reveal">
+        <img src="assets/tech-fig2.png" alt="AI-guided nanoformulation — predicting quality attributes">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="site.js"></script>
+</body>
+</html>

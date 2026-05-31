@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Longevity — AI-Guided Drug Discovery and Nanoformulation</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-content { max-width: 880px; position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(91, 141, 239, 0.08);
+    border: 1px solid rgba(91, 141, 239, 0.22);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent-ink);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.1s forwards;
+    letter-spacing: 0.08em;
+  }
+  .hero-tag .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    font-size: clamp(48px, 6.6vw, 88px);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.25s forwards;
+  }
+  .hero h1 .hi { color: var(--accent-cyan); }
+  .hero p.lead {
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.45s forwards;
+  }
+  .hero-ctas {
+    display: flex; gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease-out 0.6s forwards;
+  }
+
+  /* Hero video — full-bleed, faded background */
+  .hero-bg-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1.6s ease-out 0.3s forwards;
+    pointer-events: none;
+  }
+  .hero-bg-video video {
+    position: absolute;
+    top: 50%; left: 58%;
+    transform: translate(-50%, -50%);
+    min-width: 70%;
+    width: 70%;
+    height: auto;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    animation: heroZoom 26s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom { from { transform: translate(-50%,-50%) scale(1); } to { transform: translate(-50%,-50%) scale(1.08); } }
+  /* white veil — heavier on the left where the text sits */
+  .hero-bg-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, var(--bg-primary) 12%, rgba(245,246,251,0.86) 40%, rgba(245,246,251,0.30) 78%, rgba(245,246,251,0.62) 100%),
+      radial-gradient(ellipse at 65% 50%, transparent 35%, var(--bg-primary) 92%);
+  }
+
+  /* Workflow */
+  .workflow {
+    padding: 140px 0;
+    background:
+      radial-gradient(ellipse at center, rgba(91, 141, 239, 0.04), transparent 70%),
+      var(--bg-primary);
+  }
+  .workflow-figure {
+    margin-top: 60px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--shadow-md);
+  }
+  .workflow-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 160px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(91, 141, 239, 0.08), transparent 50%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .cta-section h2 .hi { color: var(--accent-cyan); }
+  .cta-section p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    position: relative; z-index: 1;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-bg-video video { width: 120%; opacity: 0.4; }
+  }
+  @media (max-width: 768px) {
+    .hero { padding: 120px 0 60px; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; }
+    .workflow { padding: 80px 0; }
+    .cta-section { padding: 100px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-video">
+    <video autoplay muted loop playsinline>
+      <source src="assets/hero-video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">
+        <span class="dot"></span>
+        <span>AI-DRIVEN DRUG DISCOVERY AND NANOFORMULATION</span>
+      </div>
+      <h1>AI-guided drug discovery, from <span class="hi">target to formulation</span>.</h1>
+      <p class="lead">
+        We integrate artificial intelligence across the entire drug discovery pipeline, from activity prediction to formulation feasibility, accelerating the path from molecule to medicine.
+      </p>
+      <div class="hero-ctas">
+        <a href="technology.html" class="btn-primary btn-lg">
+          Explore our platform <span class="arrow">→</span>
+        </a>
+        <a href="contact.html" class="btn-ghost btn-lg">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Integrated Workflow -->
+<section class="workflow">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">INTEGRATED WORKFLOW</span>
+      <h2>Built for the full
+discovery-to-development journey.</h2>
+      <p class="subtitle">From target definition to a translational decision package — every step connected, every output auditable.</p>
+    </div>
+    <div class="workflow-figure reveal">
+      <img src="assets/ecosystem.png" alt="AI-Driven Research Ecosystem — data-driven discovery, virtual screening, structure modification, formulation development, and industrial collaboration" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CTA (no button per user request) -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Have a target in mind?<br>Let's build the <span class="hi">future of medicine</span> together.</h2>
+    <p>Schedule a discovery call with our team, no commitment, just a conversation.</p>
+  </div>
+</section>
+
+<script src="site.js"></script>
+</body>
+</html>

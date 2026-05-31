@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — AI Longevity</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .story-section { padding: 80px 0; }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .story-grid .label { display: block; margin-bottom: 16px; }
+  .story-media {
+    margin-top: 28px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 1 / 1;
+  }
+  .story-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .story-grid h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .story-grid h2 .hi { color: var(--accent-cyan); }
+  .story-grid p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+  .story-grid p strong { color: var(--text-primary); font-weight: 500; }
+  .story-grid p .hi {
+    color: var(--accent-cyan);
+    font-weight: 500;
+  }
+
+  /* CE-NPACD heritage block */
+  .heritage-section {
+    padding: 100px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background: radial-gradient(ellipse at center, rgba(91, 141, 239, 0.04), transparent 70%);
+  }
+  .heritage-card {
+    padding: 56px 48px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .heritage-text .label { display: block; margin-bottom: 20px; }
+  .heritage-text h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .heritage-text h2 .hi { color: var(--accent-cyan); }
+  .heritage-text p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .heritage-text p strong { color: var(--text-primary); font-weight: 500; }
+  .heritage-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: #a78bfa;
+    letter-spacing: 0.1em;
+    margin-top: 16px;
+  }
+  .heritage-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #a78bfa;
+    box-shadow: 0 0 8px #a78bfa;
+  }
+  .heritage-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: white;
+    border-radius: 14px;
+  }
+  .heritage-visual img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Mission & Vision */
+  .mission-vision-section {
+    padding: 120px 0;
+  }
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .mv-card {
+    padding: 48px 40px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  .mv-card:hover { border-color: var(--accent-cyan); }
+  .mv-card .label {
+    display: block;
+    margin-bottom: 24px;
+    color: var(--accent-cyan);
+  }
+  .mv-card p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-primary);
+  }
+
+  /* Company Information */
+  .info-section {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-subtle);
+  }
+  .info-table {
+    margin-top: 40px;
+    max-width: 720px;
+  }
+  .info-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    align-items: center;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .info-label {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+  }
+  .info-row .info-value {
+    font-size: 16px;
+    color: var(--text-primary);
+  }
+  .info-row .info-value.mono-val {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent-cyan);
+  }
+
+  /* Become a Partner CTA */
+  .partner-cta {
+    padding: 140px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .partner-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(91, 141, 239, 0.08), transparent 50%);
+    pointer-events: none;
+  }
+  .partner-cta .label { display: block; margin-bottom: 24px; position: relative; z-index: 1; }
+  .partner-cta h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .partner-cta h2 .hi { color: var(--accent-cyan); }
+  .partner-cta p {
+    color: var(--text-secondary);
+    font-size: 18px;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    position: relative; z-index: 1;
+  }
+  .partner-cta .btn-primary { position: relative; z-index: 1; }
+
+  @media (max-width: 1024px) {
+    .story-grid, .heritage-card, .mv-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    .story-section, .heritage-section, .mission-vision-section, .info-section, .partner-cta { padding: 60px 0; }
+    .heritage-card { padding: 32px 24px; }
+    .mv-card { padding: 32px 24px; }
+    .info-row { grid-template-columns: 1fr; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container">
+    <span class="label" style="font-size: 16px">About</span>
+    <h1>Bridging AI and<br><span class="hi">pharmaceutical science</span>.</h1>
+    <p class="intro">A deep-tech biotechnology company applying artificial intelligence across the drug discovery pipeline, connecting computational chemistry with practical pharmaceutical development.</p>
+  </div>
+</header>
+
+<!-- Our Story -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-grid reveal">
+      <div>
+        <span class="label">Our Story</span>
+        <div class="story-media">
+          <video autoplay muted loop playsinline>
+            <source src="assets/company-logo.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div>
+        <p>AI Longevity Co., Ltd. was founded in 2026 by a team of pharmaceutical scientists, computational researchers, and international business leaders who share one conviction: <strong>the next generation of medicines will be discovered, not just by chemistry, but by <span class="hi">chemistry plus intelligence</span>.</strong></p>
+        <p>Our founders bring together extensive experience from active pharmaceutical research programs, AI-driven discovery workflows, and global pharmaceutical commercialization. Together, we are building an integrated platform that connects discovery, developability, and translational decision-making, closing the gap that drives most late-stage failures in drug development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE-NPACD Heritage -->
+<section class="heritage-section">
+  <div class="container">
+    <div class="heritage-card reveal">
+      <div class="heritage-text">
+        <span class="label">Academic Heritage</span>
+        <h2>Born from the <span class="hi">Center of Excellence in Natural Products for Ageing and Chronic Diseases</span>.</h2>
+        <p>AI Longevity emerged from the research community at <strong>CE-NPACD</strong>, a Center of Excellence at the Faculty of Pharmaceutical Sciences, Chulalongkorn University, with active programs in natural product chemistry, pharmacology, nanoformulation, and AI-assisted drug discovery.</p>
+        <p>Our founding team brings together principal investigators, researchers, and international collaborators who have worked together for years on translational pharmaceutical innovation.</p>
+        <div class="heritage-badge">
+          <span class="dot"></span>
+          <span>PROPOSED SPIN-OFF · IN PROCESS</span>
+        </div>
+      </div>
+      <div class="heritage-visual">
+        <img src="assets/chula-ce-heritage.png" alt="Chulalongkorn University · Center of Excellence in Natural Products for Ageing and Chronic Diseases (CE-NPACD)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="mission-vision-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Why We Exist</span>
+      <h2>Our mission &amp; <span class="accent-word">vision</span>.</h2>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card reveal">
+        <span class="label">Mission</span>
+        <p>To translate research-based expertise in artificial intelligence, pharmaceutical sciences, and translational development into practical innovation services and collaborative research and development.</p>
+      </div>
+      <div class="mv-card reveal">
+        <span class="label">Vision</span>
+        <p>To develop AI Longevity as a credible university-linked deep-tech company that helps move promising compounds and related technologies toward real development and broader societal impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Company Information -->
+<section class="info-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="label">Company Information</span>
+      <h2>The details, on the <span class="accent-word">record</span>.</h2>
+    </div>
+    <div class="info-table reveal">
+      <div class="info-row">
+        <div class="info-label">Founded</div>
+        <div class="info-value">2026</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Headquarters</div>
+        <div class="info-value">Bangkok, Thailand</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Type</div>
+        <div class="info-value">Deep-tech biotechnology</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Focus</div>
+        <div class="info-value">AI-driven drug discovery &amp; nanoformulation</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Academic Affiliation</div>
+        <div class="info-value">CE-NPACD, Chulalongkorn University · Proposed spin-off (in process)</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Registration</div>
+        <div class="info-value mono-val">0105569053122</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Become a Partner CTA -->
+<section class="partner-cta">
+  <div class="container">
+    <span class="label">Collaborate with us</span>
+    <h2>Whether you're a university, biotech, or innovator —<br>let's <span class="hi">advance the science</span>.</h2>
+    <p>We welcome partnerships that move the field forward. Reach out and let's explore what we can build together.</p>
+    <a href="contact.html" class="btn-primary btn-lg">Get in touch <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<script src="site.js"></script>
+</body>
+</html>

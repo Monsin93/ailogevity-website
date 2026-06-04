@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team — AI Longevity</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .team-section { padding: 60px 0 100px; }
+  .team-section:not(:first-of-type) { padding-top: 0; }
+
+  .team-section-header {
+    margin-bottom: 60px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .team-section-header h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .team-section-header h2 .hi { color: var(--accent-cyan); }
+  .team-section-header .label { flex-shrink: 0; }
+  .team-section-header p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  /* Co-founders grid (2 centered cards with photos) */
+  .founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .founder-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .founder-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); }
+  .founder-photo {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(91,141,239,0.08), rgba(124,58,237,0.08));
+    border-bottom: 1px solid var(--border-subtle);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .founder-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .founder-info { padding: 32px 28px; }
+  .founder-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .founder-role {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent-cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .founder-affiliation {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: 1.5;
+  }
+  .founder-bio {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* Leadership grid (2 cards without photos) */
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .leader-card {
+    padding: 48px 40px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .leader-card:hover { border-color: var(--accent-cyan); transform: translateY(-2px); }
+  .leader-card::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 48px;
+    height: 1px;
+    background: var(--accent-cyan);
+  }
+  .leader-role {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--accent-cyan);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+  .leader-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  /* Join Us CTA */
+  .join-section {
+    padding: 140px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .join-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(91, 141, 239, 0.06), transparent 50%);
+    pointer-events: none;
+  }
+  .join-section .label { display: block; margin-bottom: 24px; }
+  .join-section h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .join-section h2 .hi { color: var(--accent-cyan); }
+  .join-section p {
+    color: var(--text-secondary);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .founders-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 920px; }
+    .leadership-grid { grid-template-columns: 1fr; }
+    .team-section-header { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 768px) {
+    .founders-grid { grid-template-columns: 1fr; }
+    .team-section { padding: 60px 0; }
+    .leader-card { padding: 32px 24px; }
+    .leader-name { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="container">
+    <span class="label" style="font-size: 16px">Team</span>
+    <h1>The people behind<br>the <span class="hi">platform</span>.</h1>
+    <p class="intro">A team of pharmaceutical scientists, computational researchers, and industry experts united by one mission — to accelerate drug discovery through integrated AI.</p>
+  </div>
+</header>
+
+<!-- Co-Founders FIRST -->
+<section class="team-section">
+  <div class="container">
+    <div class="team-section-header">
+      <div>
+        <span class="label">[01] Co-Founders &amp; Advisors</span>
+        <h2>Decades of <span class="hi">pharmaceutical expertise</span>.</h2>
+      </div>
+      <p>AI Longevity was founded by a team uniting active pharmaceutical research with international business expertise.</p>
+    </div>
+
+    <div class="founders-grid">
+      <!-- Pornchai -->
+      <div class="founder-card reveal">
+        <div class="founder-photo">
+          <img src="assets/pornchai.png" alt="Prof. Pornchai Rojsitthisak">
+        </div>
+        <div class="founder-info">
+          <div class="founder-role" style="font-size: 16px">Co-Founder &amp; Scientific Advisor</div>
+          <div class="founder-name">Prof. Pornchai Rojsitthisak, Ph.D.</div>
+          <div class="founder-affiliation">Faculty of Pharmaceutical Sciences, Chulalongkorn University</div>
+          <p class="founder-bio">Pharmaceutical chemist specializing in medicinal chemistry, natural product drug discovery, and nanoformulation.
+He directs the Center of Excellence in Natural Products for Ageing and Chronic Diseases (CE-NPACD) and has authored extensive research on curcumin
+formulation, prodrug design, and
+AI-assisted drug screening.</p>
+        </div>
+      </div>
+
+      <!-- Worathat -->
+      <div class="founder-card reveal">
+        <div class="founder-photo">
+          <img src="assets/worathat.png" alt="Asst. Prof. Worathat Thitikornpong">
+        </div>
+        <div class="founder-info">
+          <div class="founder-role" style="font-size: 16px">Co-Founder &amp; Scientific Advisor</div>
+          <div class="founder-name">Asst. Prof. Worathat Thitikornpong, Ph.D.</div>
+          <div class="founder-affiliation">Department of Food and Pharmaceutical Chemistry, Faculty of Pharmaceutical Sciences, Chulalongkorn University</div>
+          <p class="founder-bio">Pharmaceutical chemist and registered pharmacist with expertise in analytical chemistry, natural product analysis, and prodrug development. His research
+focuses on the analytical methods and quality control frameworks that underpin pharmaceutical innovation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leadership (no photos, no bios per user request) -->
+<section class="team-section">
+  <div class="container">
+    <div class="team-section-header">
+      <div>
+        <span class="label">[02] Leadership</span>
+        <h2>Driving <span class="hi">day-to-day execution</span>.</h2>
+      </div>
+      <p>Operating leaders responsible for AI Longevity's research, business development, and strategic partnerships.</p>
+    </div>
+
+    <div class="leadership-grid">
+      <div class="leader-card reveal">
+        <div class="leader-role">Managing Director</div>
+        <div class="leader-name">Monsin Sangsawat</div>
+      </div>
+      <div class="leader-card reveal">
+        <div class="leader-role">Research Scientist</div>
+        <div class="leader-name">Adisorn Sirichotejirakul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Join Us CTA -->
+<section class="join-section">
+  <div class="container">
+    <span class="label">Join Us</span>
+    <h2>We're building a team of <span class="hi">curious minds</span>.</h2>
+    <p>Interested in working at the intersection of AI and pharmaceutical science? We'd love to hear from you.</p>
+    <a href="contact.html" class="btn-primary btn-lg">Get in touch <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<script src="site.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AI Longevity</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-section {
+    padding: 60px 0 140px;
+    min-height: 60vh;
+  }
+  .contact-card {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 56px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  }
+  .contact-card .card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .contact-card .card-title .hi { color: var(--accent-cyan); }
+  .contact-card .card-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+    line-height: 1.6;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contact-block {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .contact-block-icon {
+    flex-shrink: 0;
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(91,141,239,0.15), rgba(124,58,237,0.15));
+    border: 1px solid rgba(91,141,239,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-cyan);
+  }
+  .contact-block-content { flex-grow: 1; }
+  .contact-block-label {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .contact-block-value {
+    font-size: 17px;
+    color: var(--text-primary);
+    line-height: 1.55;
+    font-weight: 500;
+  }
+  .contact-block-value a {
+    color: var(--accent-cyan);
+    transition: opacity 0.2s ease;
+    word-break: break-all;
+  }
+  .contact-block-value a:hover { opacity: 0.7; }
+  .contact-block-value.address {
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+  .contact-block-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .contact-section { padding: 20px 0 80px; }
+    .contact-card { padding: 40px 28px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-card reveal" style="margin-top: 120px;">
+      <h1 class="card-title">Get in touch <span class="hi">with us</span>.</h1>
+      <p class="card-subtitle">Whether you have a target in mind, a research question, or want to explore a partnership — please reach out by email or visit us in person.</p>
+
+      <div class="contact-grid">
+        <!-- Email -->
+        <div class="contact-block">
+          <div class="contact-block-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <div class="contact-block-content">
+            <div class="contact-block-label">Email</div>
+            <div class="contact-block-value">
+              <a href="mailto:ailongevity19@gmail.com">ailongevity19@gmail.com</a>
+            </div>
+            <div class="contact-block-note">We typically respond within one business day.</div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="contact-block">
+          <div class="contact-block-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-block-content">
+            <div class="contact-block-label">Office</div>
+            <div class="contact-block-value address">
+              25 D5, Floor 4<br>
+              Soi Rim Thang Duan 2<br>
+              Phra Khanong Tai, Phra Khanong<br>
+              Bangkok 10260, Thailand
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="site.js"></script>
+</body>
+</html>

@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4>Contact</h4>
           <ul>
             <li>Bangkok, Thailand</li>
-            <li><a href="mailto:ailongevity19@gmail.com">ailongevity19@gmail.com</a></li>
+            <li><a href="mailto:info@ailongevity-tech.com">info@ailongevity-tech.com</a></li>
           </ul>
         </div>
       </div>
